@@ -1,1 +1,3 @@
-# node-api
+# Node Product Api
+
+Provides products dummy lists
