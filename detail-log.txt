@@ -1,0 +1,1 @@
+{"name":"test-logger","hostname":"satishmubn-aspire-e5-571","pid":20841,"level":30,"msg":"","time":"2018-05-18T10:43:34.374Z","v":0}
