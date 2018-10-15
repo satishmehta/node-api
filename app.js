@@ -4,6 +4,7 @@ var bodyParser    = require('body-parser');
 var cookieParser  = require('cookie-parser');
 var favicon       = require('serve-favicon');
 var fs            = require('fs'); // File Stream
+var cors          = require('cors');
 
 //Routes Paths
 var indexRouter   = require('./routes/index.router');
@@ -40,6 +41,7 @@ db.on('error', function(err){
 
 var app = express();
 
+app.use(cors());
 // View engine setup
 app.set('views', path.join(__dirname, 'views')); // c://nodeapp/views
 app.set('view engine', 'hbs');
