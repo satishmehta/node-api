@@ -22,7 +22,6 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
  
 // mongoose.connect('mongodb://localhost:27017/nodekb');
-// mongoose.connect('mongodb://satish:admin@123@ds119110.mlab.com:19110/mehtadb');
 mongoose.connection.openUri('mongodb://satish:admin123@ds119110.mlab.com:19110/mehtadb');  // Another method to connect
 
 let db = mongoose.connection;
@@ -91,7 +90,7 @@ function authenticate(req, res, next){
 }
 
 //Using Middleware
-// app.use(authenticate);
+app.use(authenticate);
 
 //Private Route
 app.use('/api/products', productRouter);

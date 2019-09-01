@@ -11,11 +11,11 @@ module.exports = {
       user.save(function(err){
          if(!err){
             res.status(201);
-            res.send('Register Success');
+            res.json({code:201, message: "Registration Success"})
          }else{
-            res.status(500);
+            res.status(409);
             if(err && err.errmsg && err.errmsg.indexOf("E11000 duplicate key error index") > -1){
-               res.send("Email Already Registered");
+               res.json({code:409,message:"Email already registered"});
             }else{
                res.send(err);
             }            
@@ -35,7 +35,7 @@ module.exports = {
             
                   //Creating JWT(Json Web Token) with user email as Payload 
                   var token = jwt.sign({email:user.email, roles:'admin'}, 'secretkey', {
-                        expiresIn:"5m"
+                        expiresIn:"30m"
                   });
 
                   var response = {
@@ -45,12 +45,10 @@ module.exports = {
                   res.send(response);
             }else{
                   res.status(401); //Unauthorized
-                  res.send('Unauthorized User');
+                  res.json({code:401, message:"Email/Password is incorrect."});
             }
          })
          .catch(function(err){
-            console.log(err);
-            
             res.status(500);
             res.send(err);
          })
